@@ -34,7 +34,6 @@ function main() {
   fi
 
   echo "Writing configuration to $CFG_FILE";
-  echo "  * Pinning stateVersion to 22.11";
   echo "  * Enabling flakes";
   echo "  * Enabling nix-command";
 

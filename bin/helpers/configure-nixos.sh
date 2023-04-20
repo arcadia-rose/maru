@@ -6,9 +6,6 @@ let
   pkgs = import <nixpkgs> {};
 in
 {
-  system = {
-    stateVersion = 22.11;
-  };
   imports = [
     <nixpkgs/nixos/modules/virtualisation/google-compute-image.nix>
   ];

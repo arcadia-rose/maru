@@ -11,7 +11,11 @@ in
   ];
   environment = {
     systemPackages = with pkgs; [
+      vim
       git
+      tree
+      ripgrep
+      fd
     ];
   };
   nix = {
@@ -39,7 +43,7 @@ function main() {
   fi
 
   echo "Writing configuration to $CFG_FILE";
-  echo "  * Installing git";
+  echo "  * Installing vim, git, tree, ripgrep, fd";
   echo "  * Enabling flakes";
   echo "  * Enabling nix-command";
 

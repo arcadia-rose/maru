@@ -7,7 +7,7 @@ let
 in
 {
   system = {
-    stateVersion = "22.11";
+    stateVersion = 22.11;
   };
   imports = [
     <nixpkgs/nixos/modules/virtualisation/google-compute-image.nix>
@@ -24,7 +24,7 @@ in
 function main() {
   OS_INFO="$(uname -a)";
 
-  if [[ ! "NixOS" =~ .*"$OS_INFO".* ]]; then
+  if ! [[ .*"$OS_INFO".* =~ "NixOS" ]]; then
     echo "This script is only intended to run in NixOS.";
     echo "Exiting...";
     exit

@@ -9,6 +9,11 @@ in
   imports = [
     <nixpkgs/nixos/modules/virtualisation/google-compute-image.nix>
   ];
+  environment = {
+    systemPackages = with pkgs; [
+      git
+    ];
+  };
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
@@ -34,6 +39,7 @@ function main() {
   fi
 
   echo "Writing configuration to $CFG_FILE";
+  echo "  * Installing git";
   echo "  * Enabling flakes";
   echo "  * Enabling nix-command";
 

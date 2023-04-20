@@ -12,23 +12,25 @@
       macos-pkgs = nixpkgs.legacyPackages.${macos};
       linux-pkgs = nixpkgs.legacyPackages.${linux};
 
-      common-packages = pkgs: with pkgs; [ vim git ruby_3_1 ];
+      common-packages = pkgs: with pkgs; [ ruby_3_1 ];
+      macos-packages = with macos-pkgs; [ ];
+      linux-packages = with linux-pkgs; [ ];
 
-      macos-shell = {
-        buildInputs = common-packages macos-pkgs;
+      macos-shell = macos-pkgs.mkShell {
+        buildInputs = (common-packages macos-pkgs) ++ macos-packages;
         shellHook = ''
         '';
       };
 
-      linux-shell = {
-        buildInputs = common-packages linux-pkgs;
+      linux-shell = linux-pkgs.mkShell {
+        buildInputs = (common-packages linux-pkgs) ++ linux-packages;
         shellHook = ''
         '';
       };
     in {
       packages.${macos}.default = [ ];
       packages.${linux}.default = [ ];
-      devShells.${macos}.default = macos-pkgs.mkShell macos-shell;
-      devShells.${linux}.default = linux-pkgs.mkShell linux-shell;
+      devShells.${macos}.default = macos-shell;
+      devShells.${linux}.default = linux-shell;
     };
 }

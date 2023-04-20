@@ -15,19 +15,19 @@
       common-packages = pkgs: with pkgs; [ vim git ruby_3_1 ];
 
       macos-shell = {
-        buildInputs = [ ];
+        buildInputs = common-packages macos-pkgs;
         shellHook = ''
         '';
       };
 
       linux-shell = {
-        buildInputs = [ ];
+        buildInputs = common-packages linux-pkgs;
         shellHook = ''
         '';
       };
     in {
-      packages.${macos}.default = common-packages macos-pkgs;
-      packages.${linux}.default = common-packages linux-pkgs;
+      packages.${macos}.default = [ ];
+      packages.${linux}.default = [ ];
       devShells.${macos}.default = macos-pkgs.mkShell macos-shell;
       devShells.${linux}.default = linux-pkgs.mkShell linux-shell;
     };

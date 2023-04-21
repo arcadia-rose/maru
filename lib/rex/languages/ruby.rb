@@ -1,14 +1,18 @@
 module Rex
   module Languages
-    class Ruby < Language
+    class Ruby < Rex::Language
       class << self
         def v3_1
-          "ruby-3.1.2"
+          new("ruby_3_1")
         end
       end
 
-      def initialize(**kwargs)
-        super
+      def initialize(package)
+        @package = package
+      end
+
+      def packages
+        [ @package ]
       end
     end
   end

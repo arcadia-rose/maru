@@ -1,8 +1,9 @@
-#languages = [
-#  Languages::Ruby.new(version: Languages::Ruby.v3_1),
-#]
+require 'rex'
 
-packages = [
-  Packages::Vim.new(vimrc: "examples/.vimrc"),
-#  Packages::Ripgrep.new,
-]
+module Rex
+  module Env
+    def self.languages
+      [ Rex::Languages::Ruby.v3_1 ]
+    end
+  end
+end

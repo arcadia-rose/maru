@@ -1,9 +1,9 @@
-require 'rex'
+require 'maru'
 
-module Rex
+module Maru
   module Env
     def self.languages
-      [ Rex::Languages::Ruby.v3_1 ]
+      [ Maru::Languages::Ruby.v3_1 ]
     end
   end
 end

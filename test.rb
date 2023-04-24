@@ -4,9 +4,9 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require_relative 'env'
 
-flake = Rex::Nix::Flake.new(
+flake = Maru::Nix::Flake.new(
   description: "A first ever example!",
-  outputs: Rex::Env.languages,
+  outputs: Maru::Env.languages,
 )
 
 puts flake.to_nix("aarch64-darwin")

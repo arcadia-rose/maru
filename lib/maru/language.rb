@@ -1,5 +1,5 @@
-module Rex
-  class Language < Rex::Nix::DevShell
+module Maru
+  class Language < Maru::Nix::DevShell
     def packages; end
     def setup; ''; end
 

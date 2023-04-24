@@ -1,4 +1,4 @@
-module Rex
+module Maru
   class Flake
     def packages(system); end
   end

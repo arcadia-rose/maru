@@ -1,4 +1,4 @@
-module Rex
+module Maru
   module Nix
     class DevShell
       def name
@@ -6,7 +6,7 @@ module Rex
       end
 
       def dependencies
-        [ Rex::Nix::Input.nixpkgs_unstable ]
+        [ Maru::Nix::Input.nixpkgs_unstable ]
       end
 
       def legacy_packages

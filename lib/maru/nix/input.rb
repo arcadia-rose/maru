@@ -1,4 +1,4 @@
-module Rex
+module Maru
   module Nix
     class Input
       class << self

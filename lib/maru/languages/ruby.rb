@@ -1,6 +1,6 @@
-module Rex
+module Maru 
   module Languages
-    class Ruby < Rex::Language
+    class Ruby < Maru::Language
       class << self
         def v3_1
           new("ruby_3_1")

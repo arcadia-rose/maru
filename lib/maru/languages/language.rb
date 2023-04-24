@@ -1,6 +1,6 @@
-module Rex
+module Maru
   module Languages
-    class Language < Rex::Flake
+    class Language < Maru::Flake
       def initialize(name:, legacy_packages:)
         @name = name
         @legacy_packages = legacy_packages

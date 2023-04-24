@@ -1,18 +1,20 @@
 module Maru 
   module Languages
     class Ruby < Maru::Language
+      autoload :DevShell, "maru/languages/ruby/dev_shell"
+
       class << self
-        def v3_1
-          new("ruby_3_1")
+        def v3_2
+          new("ruby_3_2")
         end
       end
 
-      def initialize(package)
-        @package = package
+      def initialize(version)
+        @version = version
       end
 
-      def packages
-        [ @package ]
+      def outputs
+        [ DevShell.new(@version) ]
       end
     end
   end

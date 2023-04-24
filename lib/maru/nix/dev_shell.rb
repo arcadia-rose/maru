@@ -1,6 +1,6 @@
 module Maru
   module Nix
-    class DevShell
+    class DevShell < Output
       def name
         "default"
       end

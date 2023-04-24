@@ -7,7 +7,7 @@ module Maru
       )
         @description = description
         @inputs = outputs.flat_map(&:dependencies).uniq(&:name)
-        @outputs = outputs + [ default_formatter ]
+        @outputs = consolidate(outputs + default_outputs)
       end
 
       def to_nix(system)
@@ -31,6 +31,24 @@ module Maru
       end
 
       private
+
+      def consolidate(outputs)
+        dev_shells = outputs
+          .select { |output| output.is_a?(Maru::Nix::DevShell) }
+          .group_by(&:name)
+          .values
+          .map do |shells|
+            shells.reduce { |shell, next_shell| shell.merge(next_shell) }
+          end
+
+        others = outputs.reject { |output| output.is_a?(Maru::Nix::DevShell) }
+
+        dev_shells + others
+      end
+
+      def default_outputs
+        [ default_formatter ]
+      end
 
       def default_formatter
         Maru::Nix::Formatter.new("nixfmt")

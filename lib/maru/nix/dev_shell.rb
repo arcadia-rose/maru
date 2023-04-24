@@ -1,6 +1,8 @@
 module Maru
   module Nix
     class DevShell < Output
+      autoload :Merged, "maru/nix/dev_shell/merged"
+
       def name
         "default"
       end
@@ -35,6 +37,18 @@ module Maru
             }
           )
         NIX
+      end
+
+      def merge(other)
+        raise RuntimeError, "Trying to merge DevShells with different names" if name != other.name
+
+        Merged.new(
+          name: name,
+          dependencies: (dependencies + other.dependencies).uniq(&:name),
+          legacy_packages: (legacy_packages + other.legacy_packages).uniq,
+          inputs: (inputs + other.inputs).uniq,
+          shell: (shell + "\n" + other.shell),
+        )
       end
     end
   end

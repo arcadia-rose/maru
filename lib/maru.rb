@@ -35,5 +35,6 @@ module Maru
 
   module Languages
     autoload :Ruby, "maru/languages/ruby"
+    autoload :Rust, "maru/languages/rust"
   end
 end

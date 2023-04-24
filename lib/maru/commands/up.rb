@@ -10,7 +10,7 @@ module Maru
       end
 
       def self.help
-        "Example"
+        "Generate a {{bold:flake.nix}} for your project based on the configuration in {{bold:env.rb}}."
       end
     end
   end

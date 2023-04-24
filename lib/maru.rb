@@ -25,11 +25,12 @@ module Maru
   ErrorHandler = CLI::Kit::ErrorHandler.new(log_file: LOG_FILE)
 
   module Nix
-    autoload :DevShell, "maru/nix/dev_shell"
-    autoload :Flake,    "maru/nix/flake"
-    autoload :Input,    "maru/nix/input"
-    autoload :Output,   "maru/nix/output"
-    autoload :System,   "maru/nix/system"
+    autoload :DevShell,  "maru/nix/dev_shell"
+    autoload :Flake,     "maru/nix/flake"
+    autoload :Formatter, "maru/nix/formatter"
+    autoload :Input,     "maru/nix/input"
+    autoload :Output,    "maru/nix/output"
+    autoload :System,    "maru/nix/system"
   end
 
   module Languages

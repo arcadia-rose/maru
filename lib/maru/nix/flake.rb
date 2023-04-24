@@ -6,8 +6,8 @@ module Maru
         outputs:
       )
         @description = description
-        @inputs = outputs.flat_map(&:dependencies)
-        @outputs = outputs
+        @inputs = outputs.flat_map(&:dependencies).uniq(&:name)
+        @outputs = outputs + [ default_formatter ]
       end
 
       def to_nix(system)
@@ -28,6 +28,12 @@ module Maru
           };
         }
         NIX
+      end
+
+      private
+
+      def default_formatter
+        Maru::Nix::Formatter.new("nixfmt")
       end
     end
   end

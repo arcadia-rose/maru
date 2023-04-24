@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+require 'open3'
+
+Dir.chdir(File.expand_path('../vendor/deps', __dir__)) do
+  bundle_info = Open3.capture3('bundle', 'info', 'sorbet-runtime').first
+  version = bundle_info.lines(chomp: true).first.match(/\((.*)\)/)[1]
+  system('gem', 'unpack', 'sorbet-runtime', '-v', version)
+  candidates = Dir.glob('sorbet-runtime-*')
+  raise 'Expected exactly one sorbet-runtime gem' unless candidates.size == 1
+
+  FileUtils.rm_rf('sorbet-runtime')
+  FileUtils.mv(candidates.first, 'sorbet-runtime')
+end

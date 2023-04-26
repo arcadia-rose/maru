@@ -13,6 +13,9 @@ module Maru
         flake = Maru::Nix::Flake.new(outputs: Maru::Env.languages.flat_map(&:outputs))
 
         puts flake.to_nix(Maru::Nix::System.current)
+        puts "\n\n"
+
+        puts Maru::Env.protocols.flat_map(&:services).map(&:to_nix).join("\n\n")
       end
 
       def self.help

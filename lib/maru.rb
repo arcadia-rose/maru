@@ -12,6 +12,7 @@ module Maru
   autoload :EntryPoint, "maru/entry_point"
   autoload :Language,   "maru/language"
   autoload :Project,    "maru/project"
+  autoload :Protocol,   "maru/protocol"
   
   Config = CLI::Kit::Config.new(tool_name: TOOL_NAME)
   Command = CLI::Kit::BaseCommand
@@ -29,12 +30,19 @@ module Maru
     autoload :Flake,     "maru/nix/flake"
     autoload :Formatter, "maru/nix/formatter"
     autoload :Input,     "maru/nix/input"
+    autoload :Language,  "maru/nix/language"
     autoload :Output,    "maru/nix/output"
     autoload :System,    "maru/nix/system"
+    autoload :Service,   "maru/nix/service"
+    autoload :Services,  "maru/nix/services"
   end
 
   module Languages
     autoload :Ruby, "maru/languages/ruby"
     autoload :Rust, "maru/languages/rust"
+  end
+
+  module Protocols
+    autoload :Redis,  "maru/protocols/redis"
   end
 end

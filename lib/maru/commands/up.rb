@@ -13,9 +13,18 @@ module Maru
         flake = Maru::Nix::Flake.new(outputs: Maru::Env.languages.flat_map(&:outputs))
         system = Maru::Nix::NixOS::Configuration.new(services: Maru::Env.protocols.flat_map(&:services))
 
-        puts flake.to_nix(Maru::Nix::System.current)
-        puts "\n\n"
-        puts system.to_nix
+        File.open("flake.nix", "w") do |f|
+          f.write(flake.to_nix(Maru::Nix::System.current))
+        end
+
+        puts CLI::UI.fmt("Wrote {{bold:flake.nix}}")
+
+        if Maru::Nix::System.nixos?
+          File.open(Maru::Nix::NixOS.CONFIGURATION_NIX, "w") do |f|
+            f.write(system.to_nix)
+          end
+          puts CLI::UI.fmt("Wrote {{bold:#{Maru::Nix::NixOS.CONFIGURATION_NIX}}}")
+        end
       end
 
       def self.help

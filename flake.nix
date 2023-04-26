@@ -9,9 +9,9 @@
   };
 
   outputs = inputs: {
-    devShells.aarch64-darwin.default = ({ nixpkgs, ... }:
+    devShells.x86_64-linux.default = ({ nixpkgs, ... }:
   let
-    pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+    pkgs = nixpkgs.legacyPackages.x86_64-linux;
   in with pkgs; pkgs.mkShell {
     buildInputs = [ ruby_3_2 rustc rustfmt rustup cargo ];
     inputsFrom = [  ];
@@ -22,8 +22,8 @@
   }
 )
  inputs;
-formatter.aarch64-darwin = ({ nixpkgs, ... }:
-  with nixpkgs.legacyPackages.aarch64-darwin; nixfmt
+formatter.x86_64-linux = ({ nixpkgs, ... }:
+  with nixpkgs.legacyPackages.x86_64-linux; nixfmt
 )
  inputs;
   };

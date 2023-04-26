@@ -20,10 +20,10 @@ module Maru
         puts CLI::UI.fmt("Wrote {{bold:flake.nix}}")
 
         if Maru::Nix::System.nixos?
-          File.open(Maru::Nix::NixOS.CONFIGURATION_NIX, "w") do |f|
+          File.open(Maru::Nix::NixOS::Configuration::CONFIGURATION_NIX, "w") do |f|
             f.write(system.to_nix)
           end
-          puts CLI::UI.fmt("Wrote {{bold:#{Maru::Nix::NixOS.CONFIGURATION_NIX}}}")
+          puts CLI::UI.fmt("Wrote {{bold:#{Maru::Nix::NixOS::Configuration::CONFIGURATION_NIX}}}")
         end
       end
 

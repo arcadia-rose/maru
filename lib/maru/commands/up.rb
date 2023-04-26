@@ -11,11 +11,11 @@ module Maru
         require_relative project.maru_rb
 
         flake = Maru::Nix::Flake.new(outputs: Maru::Env.languages.flat_map(&:outputs))
+        system = Maru::Nix::NixOS::Configuration.new(services: Maru::Env.protocols.flat_map(&:services))
 
         puts flake.to_nix(Maru::Nix::System.current)
         puts "\n\n"
-
-        puts Maru::Env.protocols.flat_map(&:services).map(&:to_nix).join("\n\n")
+        puts system.to_nix
       end
 
       def self.help

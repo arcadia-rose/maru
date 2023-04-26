@@ -35,7 +35,7 @@ module Maru
               };
               services = {
                 #{@services.map(&:to_nix).join("\n")}
-              }
+              };
             }
           NIX
         end

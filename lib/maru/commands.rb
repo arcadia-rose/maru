@@ -7,7 +7,8 @@ module Maru
       Registry.add(->() { const_get(const) }, cmd)
     end
 
-    register :Help, "help", "maru/commands/help"
-    register :Up,   "up",   "maru/commands/up"
+    register :Help,   "help",   "maru/commands/help"
+    register :Flake,  "flake",  "maru/commands/flake"
+    register :System, "system", "maru/commands/system"
   end
 end

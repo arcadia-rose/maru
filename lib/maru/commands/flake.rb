@@ -10,13 +10,18 @@ module Maru
 
         require_relative project.maru_rb
 
-        flake = Maru::Nix::Flake.new(outputs: Maru::Env.languages.flat_map(&:outputs))
+        nixos_cfg = Maru::Nix::NixOS::Configuration.new(
+          hostname: "spin",
+          services: Maru::Env.protocols.flat_map(&:services),
+        )
+
+        flake = Maru::Nix::Flake.new(outputs: Maru::Env.languages.flat_map(&:outputs) + [ nixos_cfg ])
 
         File.open("flake.nix", "w") do |f|
           f.write(flake.to_nix(Maru::Nix::System.current))
         end
 
-        puts CLI::UI.fmt("Wrote {{bold:flake.nix}}")
+        puts CLI::UI.fmt("Wrote {{bold:flake.nix}}.")
       end
 
       def self.help

@@ -11,7 +11,7 @@ module Maru
         require_relative project.maru_rb
 
         nixos_cfg = Maru::Nix::NixOS::Configuration.new(
-          hostname: "spin",
+          hostname: `hostname`.chomp,
           services: Maru::Env.protocols.flat_map(&:services),
         )
 

@@ -1,3 +1,5 @@
+# typed: strict
+
 module Maru
   module Nix
     module Services

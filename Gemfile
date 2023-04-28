@@ -3,6 +3,7 @@ CLOUDSMITH = "https://pkgs.shopify.io/basic/gems/ruby"
 ruby "3.2.2"
 
 group :development, :test do
+  gem 'tapioca', require: false
   gem 'rubocop'
   gem 'rubocop-shopify'
   gem 'smart_todo', '~> 1.3', require: false

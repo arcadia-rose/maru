@@ -1,11 +1,21 @@
+# typed: strict
+
 module Maru
   module Nix
     module Services
-      class Builtin < Service
+      module Builtin
+        extend T::Sig
+        extend T::Helpers
+        include Service
+
+        abstract!
+
+        sig { overridable.returns(T::Hash[Symbol, T.untyped]) }
         def config
           {}
         end
 
+        sig { override.returns(String) }
         def to_nix
           <<~NIX
             #{name} = {

@@ -1,7 +1,13 @@
+# typed: strict
+
 module Maru
   module Languages
     class Rust
-      class DevShell < Maru::Nix::DevShell
+      class DevShell
+        extend T::Sig
+        include Maru::Nix::DevShell
+
+        sig { override.returns(T::Array[String]) }
         def legacy_packages
           [
             "rustc",

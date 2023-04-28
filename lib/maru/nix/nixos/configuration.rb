@@ -1,14 +1,20 @@
+# typed: strict
+
 module Maru
   module Nix
     module NixOS
       class Configuration
+        extend T::Sig
+
         CONFIGURATION_NIX = "/etc/nixos/configuration.nix"
 
+        sig { params(services: T::Array[Maru::Nix::Service]).void }
         def initialize(services: [])
           # TODO - Make hardcoded values configurable
-          @services = services
+          @services = T.let(services, T::Array[Maru::Nix::Service])
         end
 
+        sig { returns(String) }
         def to_nix
           <<~NIX
             { ... }:

@@ -1,5 +1,13 @@
+# typed: strict
+
 module Maru
-  class Protocol
-    def services; []; end
+  module Protocol
+    extend T::Sig
+    extend T::Helpers
+
+    interface!
+
+    sig { abstract.returns(T::Array[Maru::Nix::Service]) }
+    def services; end
   end
 end

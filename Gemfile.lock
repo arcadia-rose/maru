@@ -45,13 +45,13 @@ GEM
     ruby-progressbar (1.13.0)
     smart_todo (1.4.3)
       rexml
-    sorbet (0.5.10793)
-      sorbet-static (= 0.5.10793)
-    sorbet-runtime (0.5.10793)
-    sorbet-static (0.5.10793-universal-darwin-22)
-    sorbet-static-and-runtime (0.5.10793)
-      sorbet (= 0.5.10793)
-      sorbet-runtime (= 0.5.10793)
+    sorbet (0.5.10796)
+      sorbet-static (= 0.5.10796)
+    sorbet-runtime (0.5.10796)
+    sorbet-static (0.5.10796-universal-darwin-22)
+    sorbet-static-and-runtime (0.5.10796)
+      sorbet (= 0.5.10796)
+      sorbet-runtime (= 0.5.10796)
     spoom (1.2.1)
       sorbet (>= 0.5.10187)
       sorbet-runtime (>= 0.5.9204)
@@ -84,6 +84,7 @@ DEPENDENCIES
   rubocop-shopify
   shopify-types!
   smart_todo (~> 1.3)
+  tapioca
 
 RUBY VERSION
    ruby 3.2.2p53

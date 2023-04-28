@@ -1,3 +1,5 @@
+# typed: ignore
+
 module Maru
   module Commands
     Registry = CLI::Kit::CommandRegistry.new(default: "help")

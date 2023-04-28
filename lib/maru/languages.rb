@@ -1,3 +1,5 @@
+# typed: strict
+
 module Maru
   module Languages
     autoload(:Ruby, "maru/languages/ruby")

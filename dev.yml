@@ -1,3 +1,9 @@
 wave: true
 
 build: bin/update-deps
+
+commands:
+  typecheck:
+    desc: "Run Sorbet to type-check the code"
+    run: "bundle exec srb tc"
+    aliases: ["tc"]

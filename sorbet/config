@@ -1,8 +1,2 @@
---dir
 .
 --ignore=tmp/
---ignore=vendor/
---ignore=lib/maru.rb
---ignore=lib/maru/entry_point.rb
---ignore=lib/maru/commands/
---ignore=lib/maru/commands.rb

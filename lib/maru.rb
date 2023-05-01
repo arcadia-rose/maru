@@ -1,12 +1,15 @@
+# typed: strict
+
+require 'sorbet-runtime'
 require 'cli/ui'
 require 'cli/kit'
 
 CLI::UI::StdoutRouter.enable
 
 module Maru
-  TOOL_NAME = 'maru'
-  ROOT      = File.expand_path('../..', __FILE__)
-  LOG_FILE  = '/tmp/maru.log'
+  TOOL_NAME = T.let('maru', String)
+  ROOT      = T.let(File.expand_path('../..', __FILE__), String)
+  LOG_FILE  = T.let('/tmp/maru.log', String)
 
   autoload :Commands,   "maru/commands"
   autoload :EntryPoint, "maru/entry_point"
@@ -15,16 +18,16 @@ module Maru
   autoload :Project,    "maru/project"
   autoload :Protocol,   "maru/protocol"
   
-  Config = CLI::Kit::Config.new(tool_name: TOOL_NAME)
-  Command = CLI::Kit::BaseCommand
+  Config = ::CLI::Kit::Config.new(tool_name: TOOL_NAME)
+  Command = ::CLI::Kit::BaseCommand
 
-  Executor = CLI::Kit::Executor.new(log_file: LOG_FILE)
-  Resolver = CLI::Kit::Resolver.new(
+  Executor = ::CLI::Kit::Executor.new(log_file: LOG_FILE)
+  Resolver = ::CLI::Kit::Resolver.new(
     tool_name: TOOL_NAME,
     command_registry: Maru::Commands::Registry
   )
 
-  ErrorHandler = CLI::Kit::ErrorHandler.new(log_file: LOG_FILE)
+  ErrorHandler = ::CLI::Kit::ErrorHandler.new(log_file: LOG_FILE)
 
   module Nix
     module NixOS

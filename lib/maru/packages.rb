@@ -46,7 +46,7 @@ module Maru
 
     sig { params(pkgs: T::Array[String]).void }
     def unknown_package_error(pkgs)
-      raise(UnknownPackageError, CLI::UI.fmt(<<~MSG))
+      raise(UnknownPackageError, ::CLI::UI.fmt(<<~MSG))
         Maru doesn't know about the following package(s): {{bold:#{pkgs.join(', ')}}}.
 
         Please submit a pull request adding them to {{bold:misc/packages.yml}} so that Maru can support you!

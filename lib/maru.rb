@@ -11,6 +11,7 @@ module Maru
   autoload :Commands,   "maru/commands"
   autoload :EntryPoint, "maru/entry_point"
   autoload :Language,   "maru/language"
+  autoload :Packages,   "maru/packages"
   autoload :Project,    "maru/project"
   autoload :Protocol,   "maru/protocol"
   

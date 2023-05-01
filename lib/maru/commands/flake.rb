@@ -10,7 +10,12 @@ module Maru
 
         require_relative project.maru_rb
 
-        flake = Maru::Nix::Flake.new(outputs: Maru::Env.languages.flat_map(&:outputs))
+        flake = Maru::Nix::Flake.new(
+          outputs: [
+            Maru::Env.packages.outputs,
+            Maru::Env.languages.flat_map(&:outputs),
+          ].flatten
+        )
 
         File.open("flake.nix", "w") do |f|
           f.write(flake.to_nix(Maru::Nix::System.current))
